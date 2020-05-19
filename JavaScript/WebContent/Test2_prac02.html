@@ -1,0 +1,105 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Test2 코드해설</title>
+	<style>
+		#colorbox {
+			width: 320px;
+			height: 320px;
+			position: relative;
+		}
+
+		#colorbox div {
+			position: absolute;
+			width: 150px;
+			height: 150px;
+			border: 1px solid black;
+		}
+
+		#yellow {
+			left: 160px;
+		}
+
+		#blue {
+			top: 160px;
+		}
+
+		#black {
+			top: 160px;
+			left: 160px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="colorbox">
+		<div id="red">red</div>
+		<div id="yellow">yellow</div>
+		<div id="blue">blue</div>
+		<div id="black">black</div>
+	</div>
+
+	<div id="base">
+		<input type="checkbox" name="all">전체선택<br>
+		<input type="checkbox" name="chk" value="red">빨강<br>
+		<input type="checkbox" name="chk" value="yellow">노랑<br>
+		<input type="checkbox" name="chk" value="blue">파랑<br>
+		<input type="checkbox" name="chk" value="black">검정<br>
+
+		<button onclick="sel()">선택</button>
+		<button onclick="clearDiv()">클리어</button>
+	</div>
+
+	<script>
+
+		document.querySelector('input[name=all]').addEventListener('click', function (e) {
+			if (e.target.checked) {
+				document.querySelectorAll('input[name=chk').forEach(function (v) {
+					v.checked = true;
+				})
+			} else {
+				document.querySelectorAll('input[name=chk').forEach(function (v) {
+					v.checked = false;
+				})
+			}
+		})
+
+		function sel() {
+			document.querySelectorAll('input[name=chk]').forEach(function (v) {
+				if (v.checked) {
+					document.querySelector('#' + v.value).style.backgroundColor = v.value;
+				} else {
+					document.querySelector('#' + v.value).style.backgroundColor = 'white';
+				}
+			})
+		}
+
+		function clearDiv() {
+			document.querySelectorAll('#colorbox div').forEach(function (v) {
+				v.style.backgroundColor = 'white';
+			})
+
+			document.querySelectorAll('input[type=checkbox]').forEach(function (v) {
+				v.checked = false;
+			})
+		}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Inheritance</title>
+	<style>
+		.area {
+			height: auto;
+			border: 1px solid black;
+			background-color: lightgray;
+		}
+
+		.pre {
+			font-size: 1vw;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+
+	<h3>Inheritance</h3>
+	<div id="area1" class="area"></div>
+	<!-- 
+		프로토타입 객체의 프로퍼티를 마음대로 쓸 수 있다는 점을
+		사용해서 상속을 구현할 수 있다.
+	 -->
+	<script>
+
+		var person = {
+
+			name: 'zzoon',
+			gender: 'male',
+			setName: function (arg) {
+				this.name = arg;
+			},
+			getName: function () {
+				return this.name;
+			},
+			setGender: function (arg) {
+				this.gender = arg;
+			},
+			getGender: function () {
+				return this.gender;
+			},
+			toString: function () {
+				var arr = [];
+				for (var str in this) {
+					if (typeof (this[str]) != 'function') {
+						var res = str + ' : ' + this[str];
+						arr.push(res);
+					}
+				}
+				return arr.sort().join(' / ');
+			}
+		}
+
+		var student = {
+			subject: 'Programming',
+			job: 'student',
+			setSubject: function (arg) {
+				this.subject = arg;
+			},
+			getSubject: function () {
+				return this.subject;
+			},
+			setJob: function (arg) {
+				this.job = arg;
+			},
+			getJob: function () {
+				return this.job;
+			}/* ,
+			toString: function () {
+				return '이름 : ' + this.name + ' 성별 : ' + this.gender + ' 과목 : ' + this.subject + ' 직업 : ' + this.job;
+			} */
+
+		}
+
+		var teacher = {
+			salary: 10000,
+			job: 'teacher',
+			setSalary: function (arg) {
+				this.salary = arg;
+			},
+			getSalary: function () {
+				return this.salary;
+			},
+			setJob: function (arg) {
+				this.job = arg;
+			},
+			getJob: function () {
+				return this.job;
+			}/* ,
+			toString: function () {
+				return '이름 : ' + this.name + ' 성별 : ' + this.gender + ' 연봉 : ' + this.salary + ' 직업 : ' + this.job;
+			} */
+		}
+
+		student.__proto__ = person;
+		teacher.__proto__ = person;
+
+		$('#area1', student);
+		$('#area1', teacher);
+
+		var who = {};
+		who.__proto__ = student;
+		who.setName('서호영');
+
+		/* Object.create() */
+
+		function create_object(o) {
+			function F() { };
+			F.prototype = o;
+			return new F();
+		}
+
+		$('#area1', who);
+		var who2 = Object.create(student);
+		$('#area1', who2);
+		who2.setName('신사임당');
+		who2.setGender('Female');
+		who2.__proto__ = teacher;
+		$('#area1', who2);
+
+	</script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

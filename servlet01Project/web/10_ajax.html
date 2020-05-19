@@ -1,0 +1,110 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>title</title>
+	<style>
+		label {
+			display: inline-block;
+			width: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>Ajax 테스트</h1>
+		<form action="ajax" method="POST" id="ajaxTest">
+			<label>아이디</label><input type="text" name="id" id="id"><br>
+			<label>비밀번호</label><input type="password" name="password" id="password"><br>
+			<label>휴대폰번호</label><input type="text" name="tell" id="tell"><br>
+			<button type="submit">전송</button>
+		</form>
+		<button type="button" onclick="jsAjax()">jsAjax</button>
+		<button type="button" onclick="jqAjax()">jqAjax</button>
+	</div>
+	<script>
+		var xhr = new XMLHttpRequest();
+
+		//load : 통신이 성공적으로 완료가 되면 발생하는 이벤트
+		xhr.addEventListener('load', ajaxTest);
+
+		function jsAjax() {
+			var id = document.querySelector("#id").value;
+			var pw = document.querySelector("#password").value;
+			var tell = document.querySelector("#tell").value;
+
+			var body = 'id=' + id + '&password=' + pw + '&tell=' + tell;
+
+
+			//http메시지 시작줄
+			xhr.open('GET', 'https://dapi.kakao.com/v3/search/book?query=비행운');
+
+			//헤더설정
+			xhr.setRequestHeader('Authorization', 'KakaoAK b882c6b99f515162fe5325904859d724');
+
+			//바디 설정
+			xhr.send();
+		}
+
+		function ajaxTest() {
+
+			//통신 성공 후 데이터를 res에 담음
+			var res = xhr.response;
+			console.dir(res);
+			document.querySelector('.wrapper').innerHTML += res;
+		}
+
+		function jqAjax() {
+
+			$.ajax(
+				{
+					//시작줄
+					type: 'post',
+					url: 'ajax',
+					//헤더
+					headers: {
+						'Content-type': 'application/x-www-form-urlencoded'
+					},
+					//바디
+					data: $('form').serialize(),
+					//통신 성공 이후 함수 실행
+					success: function (data) {
+						document.querySelector('.wrapper').innerHTML += data;
+					}
+				});
+		}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</body>
+
+</html>

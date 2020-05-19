@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.imgWrapper {
+	position: relative;
+	height: 400px;
+	width: 400px;
+	background-color: black;
+}
+
+.imgWrapper .one {
+	background-image: url(../image/image01.jpg);
+	background-size: contain;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+}
+
+.imgWrapper .two {
+	background-image: url("../image/image02.jpg");
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-size: contain;
+	opacity: 0;
+}
+
+.imgWrapper .three {
+	background-image: url("../image/image03.jpg");
+	background-size: contain;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+}

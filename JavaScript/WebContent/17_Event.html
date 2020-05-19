@@ -1,0 +1,162 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Event</title>
+	<style>
+		.area {
+			background-color: lightgray;
+			border: 1px solid black;
+			height: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+
+
+	<h1>이벤트</h1>
+	<h3>인라인 이벤트 모델</h3>
+	<button onclick="test0()">실행확인</button>
+	<br><br>
+	<script>
+		function test0() {
+			alert('test0() 실행확인');
+		}
+	</script>
+	<hr>
+
+	<h3>이벤트프로퍼티 등록</h3>
+	<button id="test1">test1() 실행확인</button>
+	<br><br>
+	<button id="test2">test2() 실행확인</button>
+	<br><br>
+	<div id="area1" class="area"></div>
+	<script>
+		$('#test1').onclick = function () {
+			$('#area1', 'test1() 실행되었습니다.');
+			$('#area1', typeof (this));
+			console.dir(this);
+		}
+
+		$('#test2').onclick = function () {
+			$('#area1', 'test2() 실행되었습니다. test1이벤트 제거');
+			test1.onclick = null;
+		}
+	</script>
+	<hr>
+
+	<h3>표준 이벤트 모델</h3>
+	<pre>
+		익스플로러 9부터 지원한다.
+	</pre>
+	<button id="btn">실행확인</button>
+	<br><br>
+	<script>
+		$('#btn').addEventListener('click', function () {
+			alert('표준이벤트 테스트');
+		})
+	</script>
+	<hr>
+
+	<h3>이벤트 발생 객체</h3>
+	<button id="test3">test3() 실행확인</button>
+	<button id="test4">test4() 실행확인</button>
+	<br><br>
+	<div id="area2" class="area">
+		<p id="targetTest" style="width: 50%;">나를 눌러</p>
+	</div>
+	<script>
+		$('#test3').onclick = function () {
+			this.style.backgroundColor = 'red';
+			this.style.color = 'white';
+		}
+
+		//해당 메서드를 실행시킨 객체가 this에 바인딩된다. 즉 #test4
+		$('#test4').addEventListener('click', function () {
+			this.style.backgroundColor = 'red';
+			this.style.color = 'white';
+		})
+
+		//매개변수 e에는 브라우저가 반환해주는 이벤트 객체가 담겨있다.
+		//이벤트객체의 target 프러퍼티를 통해 이벤트가 발생한 요소에 접근할 수 있다.
+		$('#area2').addEventListener('click', function (e) {
+			e.target.style.backgroundColor = 'red';
+			e.target.style.color = 'white';
+			e.target.innerHTML = e.target.id;
+		})
+	</script>
+	<hr>
+
+	<h3>기본 이벤트의 제거</h3>
+	<!-- a태그에는 href속성에 담겨있는 주소로 페이지를 이동시켜주는 기본이벤트가 등록 되어있다. -->
+
+	<a href="https://www.naver.com" onclick=" return test5()">naver</a>
+	<a href="https://www.daum.net" id="listen">daum</a>
+
+	<script>
+		function test5() {
+			alert('기본이벤트가 제거되어 다음으로 이동합니다.');
+			location.href = 'https://www.daum.net';
+			return false;
+		}
+
+		$('#listen').addEventListener('click', function (e) {
+			alert('기본이벤트가 제거되어 구글로 이동합니다.');
+			location.href = 'https://www.google.com';
+			e.preventDefault();
+		})
+	</script>
+	<hr>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

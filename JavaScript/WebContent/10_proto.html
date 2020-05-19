@@ -1,0 +1,125 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>proto</title>
+	<style>
+		.area {
+			height: auto;
+			border: 1px solid black;
+			background-color: lightgray;
+		}
+
+		.pre {
+			font-size: 1vw;
+		}
+	</style>
+
+
+
+</head>
+
+<body>
+	<h3>프로토타입</h3>
+	<div id="area1" class="area"></div>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+
+
+		function Student(name, html5, css) {
+			//속성정의
+			//인스턴스 변수
+			this.name = name;
+			this.html5 = html5;
+			this.css = css;
+
+			//클래스 변수
+			Student.prototype.className = 'Uclass';
+
+			this.getSum = function () {
+				return this.html5 + this.css;
+			}
+
+			this.getAvg = function () {
+				return this.getSum() / 2;
+			}
+
+			this.toString = function () {
+				return this.className + ' ' + this.name + ' ' + ', 총점 : ' + this.getSum() + ', 평균 : ' + this.getAvg();
+			}
+		}
+
+		var std01 = new Student('아이유', 100, 100);
+		var std02 = new Student('김경호', 80, 90);
+		var std03 = new Student('김고은', 80, 60);
+
+		$('#area1', std01);
+		$('#area1', std02);
+		$('#area1', std03);
+		$('#area1', '<hr>');
+
+		Student.prototype.className = 'Aclass';
+		$('#area1', std01);
+		$('#area1', std02);
+		$('#area1', std03);
+		$('#area1', '<hr>');
+
+		std02.__proto__.className = 'Zclass';
+		$('#area1', std01);
+		$('#area1', std02);
+		$('#area1', std03);
+		$('#area1', '<hr>');
+
+		std01.className = 'Iclass';
+		$('#area1', std01);
+		$('#area1', std02);
+		$('#area1', std03);
+		$('#area1', '<hr>');
+
+		Student.prototype.className = 'Uclass';
+		$('#area1', std01);
+		$('#area1', std02);
+		$('#area1', std03);
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

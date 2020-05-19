@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.slideWrapper {
+	position: relative;
+	width: 200%;
+	left: 25%;
+}
+
+.slideWrapper i {
+	position: absolute;
+	z-index: 999;
+	top: 50%;
+	transform: translateY('-50%');
+}
+
+.slideWrapper .left {
+	left: 1%;
+	font-size: 2vw;
+	color: white;
+}
+
+.slideWrapper .right {
+	left: 23%;
+	font-size: 2vw;
+	color: white;
+}
+
+.slideBox {
+	position: relative;
+	width: 25%;
+	height: 300px;
+	overflow: hidden;
+}
+
+.slideBox li {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.slideBox li:nth-child(1) {
+	background-image: url(../image/jo.jpg);
+	background-size: contain;
+
+
+}
+
+.slideBox li:nth-child(2) {
+	background-image: url(../image/IU.jpg);
+	background-size: contain;
+	left: 100%;
+
+}
+
+.slideBox li:nth-child(3) {
+	background-image: url(../image/원빈.jpg);
+	background-size: contain;
+	left: 200%;
+
+}
+
+.slideBox li:nth-child(4) {
+	background-image: url(../image/엠마.jpg);
+	background-size: contain;
+	left: 300%;
+
+}
+
+.buttonDiv {
+	position: absolute;
+	top: 90%;
+	left: 12.5%;
+	transform: translateX(-50%);
+}
+
+.navButton {
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

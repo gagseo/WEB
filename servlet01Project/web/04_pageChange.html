@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		div {
+			height: 200px;
+			border: 1px solid black;
+			background: lightgray;
+			font-size: 1vw;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>redirect</h1>
+	<div>
+		<form action="pageChange/redirect">
+			<label>이름 : </label><input type="text" name="name">
+			<button type="submit">redirect</button>
+		</form>
+		<form action="pageChange/redirect/image">
+			<label>나이키 : </label>
+			<button type="submit">나이키 : redirect</button>
+		</form>
+	</div>
+
+	<br><br>
+
+	<h1>forward</h1>
+<div>
+	<form action="pageChange/forward">
+		<label>이름 : </label><input type="text" name="name">
+		<button type="submit">forward</button>
+	</form>
+
+	<form action="pageChange/forward/image">
+		<label>나이키 : </label>
+		<button type="submit">나이키 : forward</button>
+	</form>
+</div>
+
+
+
+
+</body>
+
+</html>

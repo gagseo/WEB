@@ -1,0 +1,140 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>DOM3</title>
+	<style>
+		p {
+			border: 1px solid red;
+		}
+
+		#test01,
+		#test02,
+		#test03 {
+			width: 300px;
+			height: 300px;
+			border: 1px dotted blue;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>태그추가하기</h1>
+	<button onclick="addAppend()">appendChild()</button>
+	<button onclick="addBefore()">insertBefore()</button>
+	<button onclick="moveElemnet()">appendChild를 이용한 엘리먼트 이동</button>
+
+	<fieldset id="addele">
+		<legend>부모태그</legend>
+		<div>div 태그</div>
+	</fieldset>
+	<hr>
+
+	<h3>
+		문제1 : #test01 태그에 "domTest" 라는 내용을 가진
+		div태그를 추가하는 버튼을 만들어 보자
+	</h3>
+	<button onclick="addTest()">문제1 클릭</button>
+
+	<h3>
+		문제2 : #test02 태그에 test01에 추가된 태그들을
+		이동시키는 버튼을 만들어 보자
+	</h3>
+	<button onclick="moveTest()">문제2 클릭</button>
+	<br><br>
+
+	*test01
+	<div id="test01"></div>
+
+	*test02
+	<div id="test02"></div>
+
+	*test03
+	<div id="test03"></div>
+
+	<script>
+		function addAppend() {
+			var fieldset = document.getElementById('addele');
+			//p태그 생성
+			var p = document.createElement('p');
+
+			/* 	var txt = document.createTextNode('자식 태그들 중 마지막에 붙여 넣는다.');
+				p.appendChild(txt); */
+
+			p.textContent = '자식 태그들 중 마지막에 붙여 넣는다.';
+			fieldset.appendChild(p);
+		}
+
+		function addBefore() {
+			var newP = document.createElement('p');
+			newP.textContent = '엘리먼트 앞에 붙여 넣는다.';
+
+			var fieldset = document.getElementById('addele');
+			//fieldset에 자손 div가져
+			var oldDiv = document.querySelector('fieldset > div');
+
+			fieldset.insertBefore(newP, oldDiv);
+		}
+
+		function moveElemnet() {
+			var moveEle = document.querySelector('fieldset').children[1];
+			var addEle = document.querySelector('#test03');
+			addEle.appendChild(moveEle);
+
+		}
+
+		function addTest() {
+
+			 var divEle = document.createElement('div');
+			divEle.textContent = 'domTest';
+			document.getElementById('test01').appendChild(divEle); 
+
+			
+
+
+
+		}
+
+		function moveTest() {
+
+			 var moveDiv = document.querySelector('#test01').children[0];
+			var addDiv = document.querySelector('#test02');
+			addDiv.appendChild(moveDiv); 
+
+			//강사코드
+			/* var test01 = document.getElementById('test01').children[0];
+			document.getElementById('test02').appendChild(test01); */
+
+
+
+
+		}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

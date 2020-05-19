@@ -1,0 +1,134 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>BuiltInFunction</title>
+	<style>
+		.area {
+			height: 150px;
+			border: 1px solid red;
+			background-color: lightgray;
+		}
+
+		.area-big {
+			height: 400px;
+			border: 1px solid red;
+			background-color: lightgray;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+	<h1>URL 인코딩, URL 디코딩 함수</h1>
+	<pre>
+		URL 인코딩
+		인터넷에서 URL은 아스키 문자열로 표현가능하게끔 구성되어야 한다.
+		아스키코드로 표현이 불가능한 문자(한글, 일본어, 중국어....)
+		를 브라우저에서 표현가능한 형태로 인코딩해주는 함수를
+		자바스크립트가 제공해준다.
+
+		escape : 안씀
+		encodeURI : (:, ;, /, =, ?, &) 제외하고 인코딩
+		encodeURIComponent : 알파벳과 숫자를 제외한 모든 문자
+	</pre>
+	<button onclick="test1()">실행확인</button>
+	<br><br>
+	<div id="area1" class="area"></div>
+	<script>
+		function test1() {
+			var URI = 'http://www.naver.com?test=한글입니다.';
+			var esURI = escape(URI);
+			var enURI = encodeURI(URI);
+			var enURIC = encodeURIComponent(URI);
+
+			$('#area1', esURI);
+			$('#area1', enURI);
+			$('#area1', enURIC);
+
+
+			/* 
+			unescape : escape로 인코딩 된 문자를 디코딩
+			decodeURI : encodeURI로 인코딩 된 문자를 디코딩
+			decodeURIComponent : encodeURIComponent 인코딩 된 문자를 디코딩
+			*/
+
+			$('#area1', unescape(esURI));
+			$('#area1', decodeURI(enURI));
+			$('#area1', decodeURIComponent(enURIC));
+		}
+	</script>
+	<hr>
+	
+	<h3>eval() 함수</h3>
+	<pre>
+		문자열을 자바스크립트 코드로 변환해 실행하는 함수
+	</pre>
+
+	<button onclick="test2()">실행확인</button>
+	<br><br>
+	<label>숫자1:</label>
+	<input type="text" id="number1"><br>
+	<label>숫자2:</label>
+	<input type="text" id="number2"><br>
+	<br>
+	<div id="area2" class="area"></div>
+
+	<script>
+
+		function test2() {
+
+			var testEval = "";
+			testEval += "var number1 = parseInt($('#number1').value);";
+			testEval += "var number2 = parseInt($('#number2').value);";
+			testEval += "var sum = number1 + number2;";
+			testEval += "alert(number1 + '과 ' + number2 + '의 합은?');";
+			testEval += "$('#area2',sum);";
+
+			eval(testEval);
+
+
+		}
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>

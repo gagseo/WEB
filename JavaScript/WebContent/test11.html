@@ -1,0 +1,35 @@
+<html>
+
+<head>
+	<title>title</title>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			var id = document.getElementById(id);
+			id.innerHTML += value;
+		}
+	</script>
+
+	<button id="btn">확인</button>
+	<script>
+		$('#btn​').onclick = function () {
+			window.alert("클릭하였음");
+		}
+	</script>
+
+	<button id="btn" onclick="btn()">확인</button>
+	<script>
+		function btn(){
+			window.alert("클릭하였음");
+		}
+		
+	</script>
+
+
+
+
+</body>
+
+</html>

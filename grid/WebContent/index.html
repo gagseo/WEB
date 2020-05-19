@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- viewport:
+		모바일 브라우저에서 사용하는 가상 window
+		데스크탑에 맞춘 페이지를 모바일에서 표현하다 보니
+		요소들의 크기가 작아져서 사용자가 불편
+		viewport메타태그를 이용하면 배율을 지정가능
+		웹환경에서는 메타태그가 무시된다.
+ -->
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
+
+
+<title>UCLASS 도서관</title>
+<link rel="stylesheet" href="resources/css/common.css" />
+<link rel="stylesheet" href="resources/css/icon/all.css" />
+<link rel="stylesheet" href="resources/css/Web.css" />
+<link rel="stylesheet" media="screen and (max-aspect-ratio:4/3)"
+	href="resources/css/Mob.css" />
+
+<!-- 
+
+미디어쿼리: 미디어타입(screen, tv, print)과  표현식으로 구성되어 있다.
+표현식 작성 법 : and();
+max-width, min-width : 절대값으로 조건을 작성.
+min-aspect-ratio, max-aspect-ratio : 화면비율로 조건을 작성
+orientation:portrait: 단말기가 세로일경우
+orientation:landscape: 단말기가 가로일 경우
+
+@media screen and(max-width:900px){}
+
+ -->
+
+</head>
+<body>
+
+	<div class="content">
+	
+		<header class="topWrapper">
+			<div class="topLogo">
+				<b>UCLASS<br>HTML
+				</b>
+			</div>
+			<div class="topSearchBar">
+				<input type="text" placeholder="검색어를 입력하세요">
+				<button>
+					<i class="fas fa-search"></i>
+				</button>
+			</div>
+			<div class="topLogin">
+				<a href="login.html">로그인</a>
+			</div>
+		</header>
+
+		<aside class="floatdivWrapper">
+			<div class="floatdiv">
+				<h3 class="subject">
+					<span>- 메뉴</span>
+				</h3>
+				<ul>
+					<li class="d1"><i class="far fa-clipboard"></i> <a href="#!"><span>공지사항</span></a>
+					</li>
+					<li class="d1"><i class="fas fa-search-plus"></i> <a href="#!"><span>도서검색</span></a>
+					</li>
+					<li class="d1"><i class="far fa-question-circle"></i> <a
+						href="#!"><span>고객센터</span></a></li>
+					<li class="d1"><i class="fas fa-users"></i> <a href="#!"><span>About
+								us</span></a></li>
+				</ul>
+
+			</div>
+		</aside>
+
+		<section class="middle">
+			<div class="siteTitleWrapper">
+				<div class="siteTitle">
+					<div class="sitetitle">U CLASS 도서관</div>
+					<div class="search">
+						<div class="searchButton">
+							<p>검색</p>
+						</div>
+						<input type="text" placeholder="검색어를 입력하세요.">
+						<button class="searchIcon">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<nav class="planShop">
+			<div class="planShopMenu">
+				<div class="ps-1">
+					<i class="far fa-clipboard"></i>
+					<p>공지사항</p>
+				</div>
+				<div class="ps-2">
+					<i class="fas fa-search-plus"></i>
+					<p>도서검색</p>
+				</div>
+				<div class="ps-3">
+					<i class="far fa-question-circle"></i>
+					<p>QnA</p>
+				</div>
+				<div class="ps-4">
+					<i class="fas fa-users"></i>
+					<p>AboutUs</p>
+				</div>
+			</div>
+		</nav>
+
+		<section class="product">
+			<div class="productWrapper">
+				<div class="productBox">
+					<div class="issueTitle">
+						<span>인기도서</span>
+					</div>
+					<div class="productLine">
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+					</div>
+					<div class="issueTitle">
+						<span>스테디셀러</span>
+					</div>
+					<div class="productLine">
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+					</div>
+					<div class="issueTitle">
+						<span>최근 대출 도서</span>
+					</div>
+					<div class="productLine">
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+					</div>
+					<div class="issueTitle">
+						<span>최근 입고 도서</span>
+					</div>
+					<div class="productLine">
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+						<div class="productItem">
+							<div class="bookImg">
+								<img src="resources/image/비행운.jpg">
+							</div>
+							<div class="bookTitle">
+								비행운<br>작가:김애란
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="bottomWrapper">
+			<div class="bottom"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

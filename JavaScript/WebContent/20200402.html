@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>20200402</title>
+
+
+
+</head>
+
+<body>
+	<div>
+		<table id="tg" border="1">
+			<tr>
+				<th id="th">번호</th>
+				<th id="th">제목</th>
+				<th id="th">조회수</th>
+				<th id="th">작성일자</th>
+			</tr>
+			<tr onclick="tr()">
+				<td id="td1">3</td>
+				<td id="td1">3번 제목</td>
+				<td id="td1">0</td>
+				<td id="td1">11-07-13</td>
+			</tr>
+			<tr onclick="tr()">
+				<td id="td2">2</td>
+				<td id="td2">2번 제목</td>
+				<td id="td2">0</td>
+				<td id="td2">11-07-12</td>
+			</tr>
+			<tr onclick="tr()">
+				<td id="td3">1</td>
+				<td id="td3">1번 제목</td>
+				<td id="td3">0</td>
+				<td id="td3">11-07-11</td>
+			</tr>
+		</table>
+		<label>선택된 행 : </label>
+		<span id="s1"></span>/
+		<span id="s2"></span>/
+		<span id="s3"></span>/
+		<span id="s4"></span>
+	</div>
+
+	<script>
+		function $(id, value) {
+			var id = document.getElementById(id);
+			id.innerHTML += value;
+		}
+	</script>
+
+	<script>
+		
+		
+
+		function tr() {
+			document.querySelector('#td2').style.backgroundColor = "red";
+			document.querySelector('#td2').style.color = "white";
+		}
+
+
+	</script>
+
+
+</body>
+
+</html>

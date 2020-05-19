@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>jquery01</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<h1>Jquery개요</h1>
+	<p>존레식에 의해 개발된 경량 자바스크립트 라이브러리. 자바스크립트보다 쉽다.<br>
+		jquery의 장점<br>
+		1. DOM과 관련된 처리를 쉽게 구현가능하다. <br>
+		2. ajax처리 이벤트 처리등을 폭넓게 지원한다. <br>
+		3. 슬라이드쇼 차트등을 간단히 구현할 수 있다. <br>
+		<h3>Jquery의 연결</h3>
+		<p id="p1">
+			1. 홈페이지에서 js파일을 다운 받기 <br>
+			2. CDN(Contents Delivery Network)를 통한 연결
+		</p>
+		<script>
+			$('#p1').css('background', 'red');
+		</script>
+		<hr>
+		<h3>$(document).ready</h3>
+		<p id="p2">페이지가 로드 된 후 ready안의 콜백함수 실행 <br>
+			자바스크립트의 document.onload 속성과 같은 개념
+		</p>
+		<script>
+			/* jQuery == $ */
+			jQuery(document).ready(function () {
+				$('#p2').css('background', 'blue');
+			});
+
+			//위와 동일
+			$(document).ready(function () {
+				$('#p2').css('background', 'yellow');
+			});
+			//위와 동일
+			$(function () {
+				$('#p2').css('background', 'green');
+			});
+		</script>
+
+	</p>
+
+
+</body>
+
+</html>

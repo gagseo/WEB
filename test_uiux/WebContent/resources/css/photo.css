@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.top {
+	border: 2px solid black;
+	width: 400px;
+	height: 300px;
+}
+
+.top h2 {
+	position: relative;
+	font-size: 20px;
+}
+
+.wrapper {
+	width: 100%;
+	text-align: center;
+}
+
+.item {
+	display: inline-block;
+	border: 1px solid lightgray;
+	margin-top: 1rem;
+	transform: rotate(6deg);
+}
+
+.polaroid {
+	background: white;
+	padding: 1rem;
+	padding-left: 1%;
+	padding-top: 1%;
+	box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.img {
+	max-width: 100%;
+	height: auto;
+}
+
+.caption {
+	font-size: 12px;
+	font-family: 궁서체;
+	text-align: center;
+	color: green;
+}

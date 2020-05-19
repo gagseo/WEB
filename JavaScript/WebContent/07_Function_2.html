@@ -1,0 +1,138 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Function_2</title>
+	<style>
+		p {
+			width: 500px;
+			height: 100px;
+			background-color: lightgray;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script>
+		function $(id, value) {
+			document.querySelector(id).innerHTML += value + '<br>';
+			return document.querySelector(id);
+		}
+	</script>
+
+	<h3>함수의 매개변수</h3>
+	<!-- 
+		자바스크립트의 함수는 매개변수를 마음대로 넣어도 된다.
+	 -->
+	<button id="btn1">argument</button>
+	<p id="p1"></p>
+	<script>
+
+		/* 
+		함수가 호출될 때 자동으로 argument객체와 this인자가 넘어온다.
+		argument객체는 length프로퍼티를 가지고 있는 유사배열이다.
+		*/
+
+		function test1(value) {
+			if (arguments.length == 0) {
+				$('#p1', '인자를 안넘겼습니다.');
+			} else {
+				for (var i = 0; i < arguments.length; i++) {
+					$('#p1', arguments[i]);
+				}
+				$('#p1', value);
+			}
+		}
+		document.querySelector('#btn1').addEventListener(
+			'click',
+			function () {
+				var msg;
+				if (!(msg = window.prompt("이름을입력하세요"))) {
+					test1();
+				} else {
+					test1('안녕하세요!', '반갑습니다.', msg);
+				}
+			}
+		)
+	</script>
+	<hr>
+
+	<h3>함수를 매개변수로 전달하기</h3>
+	<button id="btn02">실행확인</button>
+	<p id="p2"></p>
+	<script>
+
+		function fn(outer) {
+			return 'fn : 안녕하세요. 저는 매개변수로 넘어온 함수입니다.' + '<br>' + outer;
+		}
+
+		function test2(argFunction) {
+			$('#p2', argFunction('반가워요 저는 매개변수로 넘어온 함수의 매개변수 입니다.'));
+		}
+
+		document.querySelector('#btn02').addEventListener('click', function () { test2(fn) });
+
+	</script>
+	<hr>
+
+	<!-- 
+		콜백함수 : 어떤 이벤트가 발생한 후 수행될 함수를 의미
+	 -->
+	<h3>콜백함수</h3>
+	<div id="div4" style="background-color: red; width: 200px; height: 200px; color: white;">
+		callBack
+	</div>
+	<p id="p3"></p>
+	<script>
+		/* 
+			setTimeout(fn, time)
+		*/
+		document.querySelector('#div4').addEventListener('click', function (e) {
+			setTimeout(function () {
+				e.target.style.backgroundColor = 'blue';
+			}, 1000)
+		}
+		)
+		setTimeout(function () {
+			$('#p3', '1');
+		}, 1000)
+		$('#p3', '2');
+		$('#p3', '3');
+		$('#p3', '4');
+		$('#p3', '5');
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

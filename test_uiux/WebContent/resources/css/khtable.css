@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.table {
+	text-align: center;
+}
+
+.caption {
+	font-weight: bold;
+	color: orangered;
+	font-size: 25px;
+}
+
+.head {
+	color: white;
+	background-color: orangered;
+}
+
+.body {
+	background-color: orange;
+}
+
+button {
+	background-color: green;
+	color: white;
+}
+
+.foot {
+	font-weight: bold;
+	color: red;
+	background-color: yellow;
+}

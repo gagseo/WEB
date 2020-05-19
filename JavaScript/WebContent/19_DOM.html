@@ -1,0 +1,137 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+	<style>
+		.area {
+			background-color: lightgray;
+			border: 1px solid black;
+			height: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+
+	<h1>DOM(Document Object Model)</h1>
+	<h3>텍스트 노드가 있는 노드 생성</h3>
+	<button onclick="test1()">뽀로로 생성</button>
+	<br><br>
+	<div id="area1" class="area"></div>
+	<script>
+		function test1() {
+			//element 생성
+			var title = document.createElement('h3');
+			var title2 = document.createElement('h4');
+
+			//textnode 생성
+			var textNode = document.createTextNode('안녕? 나는 뽀로로야');
+
+			//appendChild() 매개변수가 반드시 엘리먼트이여야 한다.
+			title.appendChild(textNode);
+			//append() 매게변수가 엘리먼트여도 되고 문자열이여도 된다.
+			title2.append('안녕 나는 뽀로로야?');
+
+			$('#area1').appendChild(title);
+			$('#area1').append(title2);
+		}
+	</script>
+	<hr>
+
+	<h3>텍스트노드가 없는 노드 생성</h3>
+	<button onclick="test2()">이미지생성</button>
+	<br><br>
+	<div id="area2" class="area"></div>
+	<script>
+		function test2() {
+			var imgTest = document.createElement('img');
+
+			imgTest.src = 'https://img.hankyung.com/photo/201906/01.19831145.1.jpg';
+			imgTest.width = '150';
+			imgTest.height = '100';
+
+			$('#area2').appendChild(imgTest);
+
+		}
+	</script>
+	<hr>
+
+	<h3>innerHTML</h3>
+	<button onclick="test3()">실행확인</button>
+	<br><br>
+	<div id="area3" class="area">
+		<table id="board">
+			<tr>
+				<th>글번호</th>
+				<th>글제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성일자</th>
+			</tr>
+		</table>
+	</div>
+	<script>
+		var num = 1;
+		var count = 0;
+
+		function test3() {
+
+			var title = '제목입니다.';
+			var user = 'user01';
+			var date = new Date();
+
+			$('#board').innerHTML += '<tr><td>' + num + '</tb>'
+				+ '<td>' + title + '</td>'
+				+ '<td>' + user + '</td>'
+				+ '<td>' + count + '</td>'
+				+ '<td>' + date.getFullYear()
+				+ "-" + (date.getMonth() + 1) + "-" + date.getDate() + '</td></tr>';
+			num++;
+			count++;
+		}
+	</script>
+	<hr>
+
+	<h3>스타일 지정</h3>
+	<button onclick="test4()">실행확인</button>
+	<br><br>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4() {
+			$('#area4').style.backgroundColor = 'black';
+			$('#area4').style.borderRadius = '100%';
+			$('#area4').style.transition = 'all 2s';
+		}
+	</script>
+	<hr>
+
+	<h3>노드 삭제</h3>
+	<button onclick="test5()">실행확인</button>
+	<br><br>
+	<button onclick="test6()">살려내기</button>
+	<br><br>
+	<div id="area5" class="area"></div>
+	<script>
+		function test5() {
+			//$('#area5').remove();
+			$('#area5').style.display = 'none';
+		}
+
+		function test6() {
+			$('#area5').style.display = 'block';
+		}
+	</script>
+	<hr>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Function_1</title>
+	<style>
+		p {
+			width: 500px;
+			height: 100px;
+			background-color: lightgray;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script>
+		function $(id, value) {
+			document.querySelector(id).innerHTML += value + '<br>';
+			return document.querySelector(id);
+		}
+	</script>
+
+	<h1>lexical scope</h1>
+	<p id="p0"></p>
+	<script>
+
+		//함수 호이스팅
+		/* 변수 및 함수의 선언을 먼저 처리하고 
+		초기화가 이루지가 때문에 함수를 선언하는 코드를 
+		함수를 실행하는 코드보다 늦게 작성할 수 있다. 
+		
+		가능한 발생 시키지 않는것이 좋다.
+		*/
+		outerFunction();
+		var before = 'before';
+
+		//function 함수이름() : 함수선언
+		function scopeTest() {
+			$('#p0', before);
+		}
+
+		function outerFunction() {
+			var before = 'after';
+
+			function inner() {
+
+				var before = 'innerafter';
+				//before가 출력된다. 함수를 선언할 때 스코프가 결정되기 때문
+				scopeTest();
+			}
+			inner();
+		}
+
+	</script>
+	<hr>
+
+	<h3>함수 표현식 방법</h3>
+	<p id="p2"></p>
+	<script>
+
+
+
+		var test2 = function expression() {
+			$('#p2', '함수호이스팅이 발생할까?');
+		}
+		test2();
+
+	</script>
+	<hr>
+
+	<h3>즉시실행함수 : (function(){})()</h3>
+	<p id="p3"></p>
+	<script>
+		(function iife() {
+			$('#p3', '함수가 즉시 실행된다.')
+
+		})();
+
+		/* +function iife() {
+			$('#p3', '함수가 즉시 실행된다.')
+		}();
+
+		-function iife() {
+			$('#p3', '함수가 즉시 실행된다.')
+		}();
+
+		!function iife() {
+			$('#p3', '함수가 즉시 실행된다.')
+		}(); */
+	</script>
+
+</body>
+
+</html>

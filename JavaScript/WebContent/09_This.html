@@ -1,0 +1,175 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>This</title>
+	<style>
+		.area {
+			height: 150px;
+			width: 80%;
+			border: 1px solid black;
+			background-color: lightgray;
+		}
+
+		.pre {
+			font-size: 1vw;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+
+	<h3>this : this인자는 arguments와 마찬가지로 함수가 실행될 때 자동으로 넘어간다.</h3>
+	<pre>
+		1. 함수를 호출할 때 this 바인딩
+		this = 전역객체 = window
+	</pre>
+	<div id="area1" class="area"></div>
+	<script>
+		var who = '전역객체의 who입니다.';
+		function info() {
+			var who = 'info함수의 who입니다.';
+			$('#area1', this.who);
+		}
+		info();
+	</script>
+	<hr>
+
+	<pre>
+		2. 메서드를 호출할 때 this 바인딩
+		this = 전역객체 = window
+	</pre>
+	<div id="area2" class="area"></div>
+	<script>
+		var methodWho = '전역객체의 학생 입니다.';
+
+		var Uclass = {
+			methodWho: 'Uclass 학생',
+			info: function () {
+				$('#area2', this.methodWho);
+
+				(function () {
+					$('#area2', this.methodWho);
+				})();
+			}
+		}
+
+		var Zclass = {
+			methodWho: 'Zclass 학생',
+			info: Uclass.info
+		}
+		Uclass.info();
+		Zclass.info();
+	</script>
+	<hr>
+
+	<pre>
+		3. 생성자함수로 동작할 때 this 바인딩
+		생성자함수 코드가 실행되면 최우선적으로 빈객체를 하나 생성한다.
+		그 다음 생성자함수의 this를 빈 객체에 바인딩 한다.
+		생성자함수에 return문이 없으면 this를 반환한다.
+		return문에 객체가 있으면 해당 객체를 반환한다.
+		return문에 기본타입이 있으면 
+		일반함수로 사용할 때는 기본타입을, 생성자함수로 사용할 때는 this를 반환합니다.
+	</pre>
+	<div id="area3" class="area"></div>
+	<script>
+		var constructorWho = '전역객체의 생성자 who';
+		function Info() {
+			this.info = function () {
+				$('#area3', this.who);
+			}
+			//return this; 가 숨어 있다.
+			/* return {
+				info : $('#area3', '이 객체가 반환될 것이야')
+			} */
+			//return 100;
+		}
+
+		var Uclass = new Info();
+
+		Uclass.who = 'Uclass학생';
+		Uclass.info();
+		//$('#area3', Info());
+	</script>
+	<hr>
+
+	<pre>
+		3. 명시적 this바인딩
+		Function 생성자함수의 프로토타입 객체인 function의 
+		call 과 apply 메서드를 활용해서 this를 명시적으로 바인딩 할 수 있다.
+	</pre>
+	<div id="area4" class="area"></div>
+	<script>
+		var Uclass = {
+			who: 'Uclass학생',
+			age: 100,
+			info: function () {
+				$('#area4', this.who);
+			}
+		}
+
+		var Zclass = {
+			who: 'Zclass학생',
+			age: 100,
+			info: function () {
+				$('#area4', this.who);
+			}
+		}
+
+		function changeWho(who, age) {
+			this.who = who;
+			this.age = age;
+			this.toString = '이름 : ' + this.who + ' 나이 : ' + this.age;
+		}
+
+		Uclass.info();
+		changeWho.apply(Uclass, ['Uclass의 이름이 바뀌었다.', 9999]);
+		Uclass.info();
+		$('#area4', Uclass.toString);
+
+		Zclass.info();
+		changeWho.call(Zclass, 'Zclass의 이름이 바뀌었다.', 9999);
+		Zclass.info();
+		$('#area4', Zclass.toString);
+	</script>
+	<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

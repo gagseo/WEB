@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>title</title>
+</head>
+
+<body>
+	<form action="cookie">
+		<!-- 
+	datalist : <input> 요소에서 사용하기 위한 옵션들의 리스트를 미리 정의할 때 사용
+			-> 자동완성 기능 제공
+	datalist의 id 값을 input 요소의 list 속성 값과 매칭 시켜서 사용
+ -->
+		<label>프로그래밍언어</label>
+		<input type="text" list="lang" name="search">
+		<button type="submit">검색하기</button>
+		<datalist id="lang">
+			<option value="JAVA"></option>
+			<option value="ORACLE"></option>
+			<option value="HTML"></option>
+			<option value="CSS"></option>
+			<option value="JAVASCRIPT"></option>
+			<option value="Servlet"></option>
+		</datalist>
+	</form>
+
+	<button onclick="rmLocalStorage()">LocalStorage 삭제</button>
+	<button onclick="rmSessionStorage()">sessionStorage 삭제</button>
+
+	<script>
+		alert(document.cookie);
+
+		//쿠키 추가
+		document.cookie = 'javascript=cookie;Max-age=3600';
+		alert(document.cookie);
+
+		//쿠키 처럼 사용 가능한 localStorage
+		//사용기간에 제한이 없습니다.
+		//쿠키 = 용량 4kb
+		//localStorage = 5~10mb;
+
+		//localStorage 값 추가
+		localStorage.setItem('localStorage', '브라우저에 무기한으로 저장하는 객체.');
+
+		//localStorage 값 가져오기
+		alert(localStorage.getItem('localStorage'));
+
+		function rmLocalStorage(target) {
+			//localStorage.removeItem('localStorage');
+			localStorage.clear();
+			alert(localStorage.getItem('localStorage'));
+		}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>DOM2</title>
+	<style>
+		h3 {
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>부모탐색, 자식탐색</h1>
+	<div>
+		<p>child01</p>
+		<p>child02</p>
+		<p>child03</p>
+	</div>
+	<button onclick="searchPar()">부모탐색</button>
+	<button onclick="searchChi()">자식탐색</button>
+
+	<h3 onclick="test01()">1. test01의 부모태그에 배경색을 적용</h3>
+	<h3 onclick="test02()">2. 마지막 div태그에 포함된 test04의 폰트크기를 20pt로 적용</h3>
+
+	<div>
+		<p>test01</p>
+		<p>test02</p>
+	</div>
+
+	<div>
+		<p>test03</p>
+		<p>test04</p>
+	</div>
+
+	<script>
+		function searchPar() {
+			var child01 = document.getElementsByTagName('p')[0];
+			var parentNode = child01.parentElement;
+
+			parentNode.style.backgroundColor = 'pink';
+		}
+
+		function searchChi() {
+			var divElement = document.getElementsByTagName('div');
+			var divChildren = divElement[0].children;
+
+			divChildren[0].style.backgroundColor = 'blue';
+		}
+	</script>
+
+	<script>
+
+		var test = document.getElementsByTagName("p");
+
+		function test01() {
+
+			test[3].parentNode.style.backgroundColor = "pink";
+
+			// document.querySelector("#area").innerHTML += test01[6];
+
+			// var parentTest1 = test01.parentElement;
+			// parentTest1.style.backgroundColor = 'pink';
+		}
+
+		function test02() {
+
+			test[6].style.fontSize = '20pt';
+
+		}
+	</script>
+
+
+
+</body>
+
+</html>

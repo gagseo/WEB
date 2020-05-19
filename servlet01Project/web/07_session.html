@@ -1,0 +1,36 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>title</title>
+</head>
+
+<body>
+	
+	
+	<form action="session/logIn">
+		<h3>사용하실 닉네임을 알려주세요</h3>
+		<input type="text" name="id">
+		<button type="submit">입장하기</button>
+	</form>
+
+	<script>
+		//sessionStorage 값 추가
+		sessionStorage.setItem('sessionStorage', '새명주기가 세션스코프를 지니는 저장객체.');
+
+		//sessionStorage 값 가져오기
+		alert(sessionStorage.getItem('sessionStorage'));
+
+		function rmSessionStorage(target) {
+			//sessionStorage.removeItem('sessionStorage');
+			sessionStorage.clear();
+			alert(sessionStorage.getItem('sessionStorage'));
+		}
+	</script>
+
+
+
+	
+</body>
+
+</html>

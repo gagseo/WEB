@@ -1,0 +1,144 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>prac_chart</title>
+	<link href="resources/c3/c3.css" rel="stylesheet">
+	<style>
+		.wrapper1 {
+			width: 500px;
+			height: 400px;
+			background-color: lightgreen;
+			position: absolute;
+		}
+
+		.wrapper2 {
+			width: 800px;
+			height: 400px;
+			background-color: lightgreen;
+			position: absolute;
+			left: 550px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="wrapper1">
+			<button id="input" onclick="openFile(this)">도서 대출횟수 파이차트</button>
+			<div id="bookChart1"></div>
+
+		</div>
+		<div class="wrapper2">
+			<button id="input2" onclick="openFile(this)">도서 대출횟수 XY차트</button>
+			<div id="bookChart2"></div>
+		</div>
+	</div>
+
+	<script src="resources/c3/c3.min.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+	<script>
+
+		function openFile(ele) {
+			var input = document.createElement('input');
+			input.setAttribute('type', 'file');
+			input.click();
+			input.onchange = (function(e){
+				parseJson(e.target.files[0], ele);
+			})
+		}
+
+		function parseJson(file, ele) {
+			var arr = [];
+			var reader = new FileReader();
+			reader.readAsText(file, 'UTF-8');
+			reader.onload = function () {
+				console.dir(typeof (reader.result));
+
+				//json문자열 -> 자바스크립트 객체로 변환해주는 메서드
+				//JSON.parse(json);
+
+				var jobj = JSON.parse(reader.result);
+				console.dir(typeof (jobj));
+				console.dir(jobj);
+				//자바스크립트 객체 -> json문자열로 변환하는 메서드
+				//JSON.stringify();
+				var strObj = JSON.stringify(jobj);
+				console.dir(typeof (strObj));
+				console.dir(strObj);
+
+				jobj.DATA.forEach(function (v) {
+					var innerArr = [];
+					innerArr.push(v.title);
+					innerArr.push(v.cnt);
+					arr.push(innerArr);
+				})
+				if (ele.id == 'input') {
+					drawPieChart(arr);
+				} else {
+					drawBarChart(arr);
+				}
+			}
+
+		}
+
+
+		function drawPieChart(arr) {
+			var chart = c3.generate({
+				bindto: '#bookChart1',
+				data: {
+					columns: arr, type: 'pie'
+				},
+				size: {
+					width: 500,
+					height: 350
+				}
+			});
+		}
+
+		function drawBarChart(arr) {
+			var chart = c3.generate({
+				bindto: '#bookChart2',
+				data: {
+					columns: arr,
+					type: 'bar'
+				},
+				bar: {
+					width: {
+						ratio: 0.5 // this makes bar width 50% of length between ticks
+					}
+				},
+				size: {
+					width: 790,
+					height: 350
+				}
+			});
+		}
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

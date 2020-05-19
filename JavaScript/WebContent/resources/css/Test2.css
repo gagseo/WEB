@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.colorWrapper {
+	height: 420px;
+	width: 450px;
+}
+
+.color1 {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	border: 1px solid black;
+}
+
+.color2 {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	border: 1px solid black;
+	left: 220px;
+}
+
+.color3 {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	border: 1px solid black;
+	transform: translateY(105%);
+}
+
+.color4 {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	border: 1px solid black;
+	left: 220px;
+	transform: translateY(105%);
+}

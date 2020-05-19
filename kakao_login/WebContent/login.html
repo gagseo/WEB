@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		.profile {
+			width: 150px;
+			height: 200px;
+		}
+
+		table {
+			text-align: center;
+			display: none;
+			color: white;
+			font-weight: bold;
+		}
+
+		thead>tr>td {
+			background-color: black;
+		}
+
+		tbody>tr>td {
+			background-color: darkgray;
+			color: black;
+		}
+	</style>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<title>Kakao JavaScript SDK</title>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				[카카오 로그인] 기본 button
+			</h3>
+		</div>
+		<div class="panel-body">
+			<a id="kakao-login-btn"></a>
+		</div>
+		<div id="test">
+			<table border="1">
+				<thead>
+					<tr>
+						<td>번호</td>
+						<td>이름</td>
+						<td>프로필사진</td>
+						<td>이메일주소</td>
+						<td>연령대</td>
+						<td>성별</td>
+						<td>최근 접속시간</td>
+					</tr>
+				</thead>
+				<tbody id="content">
+
+				</tbody>
+
+
+			</table>
+
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		var myJSKey = "a3516b835add5a4ea40c900a58bb599f";
+		Kakao.init(myJSKey);
+		// 카카오 로그인 버튼을 생성합니다.
+		Kakao.Auth.createLoginButton({
+			container: '#kakao-login-btn',
+			success: function (authObj) {
+				alert("로그인 성공");
+				console.log(authObj.scope);
+				console.log(authObj.access_token);
+				document.getElementById("test").append(authObj.access_token);
+				Kakao.API.request({
+					url: '/v2/user/me',
+					success: function (response) {
+						console.log(response.properties.nickname);
+						$("table").css({ "display": "table" });
+						for (var i = 1; i < 5; i++) {
+							$("#content").append("<tr id='trow" + i + "'><td>" + i + "</td>");
+							$("#trow" + i).append("<td>" + response.kakao_account.profile.nickname + "</td>");
+							$("#trow" + i).append("<td><img src='" + response.kakao_account.profile.profile_image_url + "' class='profile'></td>");
+							$("#trow" + i).append("<td>" + response.kakao_account.email + "</td>");
+							$("#trow" + i).append("<td>" + response.kakao_account.age_range + "</td>");
+							$("#trow" + i).append("<td>" + response.kakao_account.gender + "</td>");
+							$("#trow" + i).append("<td>" + response.connected_at + "</td></tr>");
+						}
+					},
+					fail: function (error) {
+						console.log(error);
+					}
+				});
+
+			},
+			fail: function (err) {
+				alert("로그인 실패");
+			}
+		});
+
+	
+	</script>
+
+<button class="logout-btn" onclick="kakaoLogout()">로그아웃</button>
+
+<script type="text/javascript">
+
+	function kakaoLogout() {
+			if (!Kakao.Auth.getAccessToken()) {
+				alert('로그아웃에 실패')
+				return
+			}
+			Kakao.Auth.logout(function () {
+				alert('로그아웃 성공 ' + Kakao.Auth.getAccessToken())
+			})
+		}
+
+</script>
+
+</body>
+
+</html>

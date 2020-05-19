@@ -1,0 +1,182 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Closure</title>
+	<style>
+		.area {
+			height: auto;
+			border: 1px solid black;
+			background-color: lightgray;
+		}
+
+		.pre {
+			font-size: 1vw;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		function $(id, value) {
+			if (arguments.length >= 2) {
+				document.querySelector(id).innerHTML += value + '<br>';
+			} else {
+				return document.querySelector(id);
+			}
+		}
+	</script>
+
+	<h3>Scope</h3>
+	<div id="area1" class="area">
+		<pre>
+		자바스크립트에서 함수는 객체입니다.
+		Object -> Function -> 만든 함수
+		함수객체에는 Call과 Construct 내부 메서드가 존재
+		Call : 일반적으로 함수를 호출하면 Call메서드가 실행되면서 함수를 실행
+		Construct : new 연산자와 함께 사용할 경우 실행
+
+		함수객체가 생성될 당시의 스코프환경을 기억하는 scope라는 프로퍼티가 존재한다.
+	</pre>
+	</div>
+	<script>
+		function scope1() {
+			var firstScope = '첫번째 스코프';
+
+			function scope2() {
+				var secondScope = '두번째 스코프';
+
+				function scope3() {
+					var thirdScope = '세번째 스코프';
+
+					function scope4() {
+						var lastScope = '마지막 스코프';
+						console.dir(scope4);
+
+					}
+					scope4();
+				}
+				scope3();
+			}
+			scope2();
+		}
+		scope1();
+	</script>
+	<hr>
+
+	<h3>클로저</h3>
+	<div id="area2" class="area">
+		<pre>
+		클로저 : 이미 실행이 끝난 함수의 변수를 참조하는 함수
+	</pre>
+	</div>
+	<script>
+		function outer(arg) {
+			var x = '외부함수의 지역변수 y의 값은';
+			var y = arg;
+			var z = function (innerArg) {
+				y++;
+				return x + y + innerArg;
+			}
+			return z;
+		}
+
+		var closureTest = outer(0);
+		$('#area2', closureTest);
+
+		for (var i = 0; i < 10; i++) {
+			$('#area2', closureTest('외부함수의 실행이 끝났지만 지역변수를 읽고 쓸 수 있다!'));
+		}
+	</script>
+	<hr>
+
+	<h3>클로저 실습</h3>
+	<div id="area3" class="area"></div>
+	<script>
+
+		var arr = [];
+
+		for (var i = 0; i < 5; i++) {
+			arr[i] = function () {
+				return i;
+			}
+
+		}
+
+		arr.forEach(function (v) {
+			$('#area3', v());
+		});
+
+		$('#area3', '=========');
+
+		var arr2 = [];
+		for (var i = 0; i < 5; i++) {
+			arr2[i] = function (id) {
+				return function () {
+					return id+i;
+				}
+			}(i);
+		}
+
+		arr2.forEach(function (v) {
+			$('#area3', v());
+		});
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

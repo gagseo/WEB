@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>폼관련태그</title>
+</head>
+
+<body>
+
+	<form>
+		<label>검색할 내용</label><input type="text"> <input type="submit">
+	</form>
+
+	<form>
+		<input type="text"><br>
+		<input type="submit">
+	</form>
+
+	<hr>
+	<form>
+		<fieldset>
+			<legend>필드셋의 제목을 작성하는 부분이다.</legend>
+			<label>password</label><input type="password">
+		</fieldset>
+
+		<label>검색 : </label><input type="search" placeholder="검색할 내용을 넣어주세요">
+		<label>이메일 : </label><input type="email" placeholder="이메일을 입력하세요">
+		<input type="submit">
+	</form>
+
+	<form>
+		<h3>숫자와 관련된 input 태그</h3>
+		<input type="number" min="0" max="100" step="5">
+		<!-- 크롬에서 정상적으로 실행이 안된다 -->
+		<!-- 슬라이드바를 통해 숫자를 지정할 수 있다. -->
+		<input type="range" name="point" min="0" max="100" value="50" step="10"> <label>hidden : 안보임</label><input
+			type="hidden">
+
+	</form>
+
+	<hr>
+
+	<form>
+		<h3>select태그와 option태그</h3>
+		<select>
+			<option>한국</option>
+			<option>중국</option>
+			<option value="etc">기타</option>
+		</select> <input type="submit">
+		<select size="2" multiple>
+			<option>한국</option>
+			<option>중국</option>
+			<option value="etc">기타</option>
+		</select>
+
+	</form>
+
+	<form>
+		<h3>그 밖에 input태그들</h3>
+
+		<h3>색상선택</h3>
+		<input type="color"> <br> <br> <input type="file">
+		<button type="submit">button</button>
+	</form>
+
+	<form>
+		<!-- 라디오버튼과 체크박스 -->
+		<!-- 라디오버튼 은 중복 선택이 안된다 -->
+		<input type="radio" name="gender" value="male" id="male"><label for="male">남자</label> <input type="radio"
+			name="gender" value="female" id="female"><label for="female">여자</label>
+		<!-- 체크박스는 중복 선택이 된다 -->
+		<input type="checkbox" name="gender" value="male" id="male"><label for="male">남자</label> <input type="checkbox"
+			name="gender" value="female" id="female"><label for="female">여자</label>
+	</form>
+
+
+</body>
+
+</html>

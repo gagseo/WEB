@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NOTICE">
+	<!-- resultType 확인! 받아줄값이 int형 -->
+	<!-- 함정! -->
+	<select id="contentCnt" resultType="_int">
+	select count(*) from tb_notice
+	</select>
+	
+	<select id="selectNoticeList" resultType="Notice">
+	select * from
+      (select rownum rnum, n1.* from
+      (select * from tb_notice order by #{orderBy} desc) n1
+      ) where rnum between #{start} and #{end}
+	</select>
+	
+	<resultMap type="map" id="resultNotice">
+		<id column="noticeno" property="noticeNo"/>
+		<result column="noticetitle" property="noticeTitle"/>
+		<result column="noticewriter" property="noticeWriter"/>
+		<result column="noticepassword" property="noticePassword"/>
+		<result column="noticecontent" property="noticeContent"/>
+		<result column="original_filepath" property="original_filepath"/>
+		<result column="rename_filepath" property="rename_filepath"/>
+	</resultMap>
+	<select id="noticeDetail" resultMap="resultNotice">
+		select
+		noticeno, noticetitle, noticewriter, noticepassword, noticecontent, original_filepath, rename_filepath
+		from tb_notice
+		where
+		noticeno = #{noticeNo}
+	</select>
+	
+	<!-- 위의 map형식으로 하지 않을 경우  -->
+	<!-- <select id="noticeDetail" resultType="Notice">
+	select * from tb_notice where noticeNo = #{noticeNo}
+	</select> -->
+	
+	<insert id="insertNotice" parameterType="Notice">
+		insert into tb_notice values(
+		S_NOTICE.nextval,
+		#{noticeTitle},
+		SYSDATE,
+		#{noticeWriter},
+		#{noticePassword},
+		#{noticeContent},
+		#{original_filepath},
+		#{rename_filepath}
+		)
+	</insert>
+	
+</mapper>
+
+
